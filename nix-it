@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Check if the command-line arguments are provided
+if [ "$#" -eq 0 ]; then
+    echo "Usage: nix-it command [arguments]"
+    exit 1
+fi
+
+# Run the command inside nix-user-chroot
+~/.cargo/bin/nix-user-chroot ~/.nix bash -c "$*"
