@@ -36,7 +36,9 @@ Where `$SHELL` is your preferred shell.
 
 ### single commands
 
-Run commands in the nix chroot using `nix-it`, or drop into a `zsh` shell in the chroot with `nix-zsh`.
+Run commands in the nix chroot using `nix-it`.
+
+## installing software
 
 You can install and use software from nix channels listed in `~/.nix-channels`.
 
