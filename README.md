@@ -8,7 +8,9 @@ But you can also run it in a chroot, which can be helpful on systems where you d
 
 0. Install cargo and the rust buildchain.
 1. `cargo install nix-user-chroot`
-2. Copy `nix-it` and `nix-zsh` into your path.
+2. Make your `~/.nix` directory `mkdir -m 0755 ~/.nix`
+3. Install nix `nix-user-chroot ~/.nix bash -c 'curl -L https://nixos.org/nix/install | sh'`
+4. Copy `nix-it` and `nix-zsh` into your path.
 
 ## tmux takeover
 
@@ -21,6 +23,18 @@ echo 'set-option -g default-shell $HOME/bin/nix-zsh' >>~/.tmux.conf
 ```
 
 ## usage
+
+### nix chroot
+
+Enter the nix chroot using `nix-zsh` or entering:
+
+```
+~/.cargo/bin/nix-user-chroot ~/.nix $SHELL
+```
+
+Where `$SHELL` is your preferred shell.
+
+### single commands
 
 Run commands in the nix chroot using `nix-it`, or drop into a `zsh` shell in the chroot with `nix-zsh`.
 
@@ -37,6 +51,7 @@ Remove software with `nix-env -e <package>`, e.g. `nix-env -e hello` in this cas
 
 Nix makes it easy to build software based on package expressions written in the nix expression language.
 By default, we'll use information in `default.nix` in the current working directory.
+Note that this assumes you're in the nix chroot environment as described above.
 
 ```
 nix-build
